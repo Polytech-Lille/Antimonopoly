@@ -1,0 +1,139 @@
+\usepackage{hyperref}
+\author{
+        Bragagnolo, Santiago
+}
+\title{TP GIS4 - Anti-monopoly}
+\date{\today}
+ 
+\documentclass[12pt]{article}
+ 
+\begin{document}
+\maketitle
+Cet exercise est base sur un exercise propose par le cour de Paradigmes de programation, au UTN, Argentine .
+
+\section{Introduction}
+
+Vous souhaitez implémenter un jeu de style Monopoly dans lequel les joueurs marchent un chemin où
+ils doivent prendre des décisions d'investissement et faire certaines actions, afin d'augmenter votre
+patrimoine. Attention à ne pas trop Allez au-dessus, parce que les lois strictes antitrust d'État peut vous obliger à
+distribuer votre richesse.
+
+
+\section{Characteristiques du jeu}
+
+    \subsection{Plateau du jeu}
+    La Plateau est constituée d'un chemin circulaire composé d'un certain nombre de casiers,
+dans chacun desquels il y a des indications. Il y a une case marquée "sortie" qui
+indique le point de départ du jeu.
+
+    \subsection{Des Jouers}
+    Il peut y avoir autant de joueurs que souhaité. Chaque joueur a un certain
+montant initial de l'argent. Au fur et à mesure que le jeu progresse, chacun de jouers augmente
+ou réduis leur argent, selon les décisions d'investissement que chacun prend ou d'autres
+circonstances qui vous viennent à l’esprit. Les capitaux propres d'un joueur sont considérés comme équivalents à
+l'argent qui a plus l'évaluation de tous les investissements qu'il ait. Si un joueur
+il perd tous ses capitaux qu'il ne peut pas continuer à jouer.
+
+    
+    \subsection{L'etat}
+    L'Etat est un acteur social dont la fonction principale est de réguler l'activité économique des
+différents joueurs. Vous avez une certaine quantité de ressources financières.  L'Etat ne participe pas
+au jeu en marchant sur le plateau, mais interagissez avec tous les joueurs différentes manières.
+
+    \subsection{La dinamique de jeu}
+    Initialement, tous les joueurs sont placés dans la case "sortie". À tour de rôle, chacun
+    des joueurs lance un dé et avance d'où il se trouve autant de pas que l'indique le
+    dé, arrivant ainsi à un nouveau casier. Là, le joueur doit suivre les instructions
+    qui sont indiqués dans la case et prennent les décisions économiques qu'il juge appropriées.
+    De cette façon, tous les joueurs avancent à travers le plateau et font leur
+    entreprise. Comme l'itinéraire est circulaire, il n'y a pas de point d'arrivée prédéterminé,
+    raison pour laquelle ils continuent à tourner jusqu'à ce que l'on souhaite mettre fin au jeu.
+    Le jeu est également terminé s'il reste un seul joueur ou si l'État échoue.
+    
+    \subsection{Casiers}
+    Les casiers peuvent être:
+    \begin{itemize}
+        \item Investissement: si l'investissement est disponible, le joueur décide s'il veut le prendre
+    lui ou laissez-la passer. Si l'investissement provient déjà d'un autre joueur, qui tombe dans la boîte
+    Vous devez lui payer une somme d'argent basée sur la valeur de l'investissement.
+        \item Loi antitrust: oblige le joueur à céder tous ses investissements
+    qu'il possède qu'ils dépassent le maximum fixé par l'État. Investissements
+    ils reviennent à l'Etat, qui paie le joueur la moitié de leur prix, et ils restent
+    à nouveau disponible.
+        \item  Bureau Finances publiques : oblige le joueur à payer à l'État un certain pourcentage de son
+    capitaux propres, au cas où il dépasserait une certaine valeur minimale. Selon quelle taxe
+    traiter, ces valeurs changent (impôt sur le revenu, impôt foncier personnel, etc.)
+        \item Subvention: Le joueur reçoit de l'État le montant indiqué dans la case.
+        \item Respos: C'est un casier vide dans lequel rien ne se passe. En particulier, la sortie
+    en fait partie.
+    \end{itemize}
+
+    \subsection{Investissements}
+Les investissements sont le principal moyen pour les joueurs de gagner de l'argent. Initialement
+Ils sont tous entre les mains de l'Etat et chacun a un prix de référence, qui est le
+montant à payer par le joueur lorsqu'il tombe dans la boîte et décide d'assumer ledit
+investissement.
+Chaque investissement génère un revenu calculé en pourcentage du prix du
+référence, qui est facturée au joueur qui tombe dans la boîte. Prix et pourcentages de
+les bénéfices d'investissement sont complètement arbitraires.
+
+    \subsection{Style des joueurs}
+
+    Le fait qu'un joueur accepte ou non de conserver un investissement dépend en premier lieu 
+    avoir assez d'argent, mais aussi votre style de jeu. 
+    Certains styles sont suivant:
+        \begin{itemize}
+           \item Prudent: vous ne l'acceptez que si vous avez moins d'un certain montant 
+           d'investissements et La valeur d'investissement représente moins de 20 \% de vos
+           actifs actuels.
+           \item  Agressif: Achetez tout.
+        \end{itemize}
+
+    Finalement, si un joueur est obligé de se séparer de certains investissements, 
+        il choisit lesquels faire en fonction de votre style de jeu:
+        \begin{itemize}
+            \item Prudent: ceux qui ont les prix les plus élevés.
+            \item Agressif: le moins cher.
+        \end{itemize}
+
+
+        
+\section{Exigences du projet}
+Sur la base de l'approche générale du jeu, le
+L'implémentation demandée doit comprendre:
+
+\subsection{Définition initiale}
+Créez un plateau de jeu avec plusieurs cases (au moins 10), certains joueurs (au moins 2, un des
+chaque style de jeu) et l'État. Tout définir prix, pourcentages, montants d’argent et
+valeurs initiales nécessaires. 
+Distribuer quantités et valeurs de casier d'une manière que vous considérez comme équilibrée.
+
+\subsection{Simulation}
+
+ Dans la method maine effectuez les étapes suivantes, en choisissant arbitrairement la marque de dés, 
+ parmi façon de voir les différentes variantes:
+   Localisez tous les joueurs à la sortie.
+   Demander à un joueur d'avancer un certain nombre de cases et de faire quoi
+ lui correspond.
+   Vérifier la situation financière du joueur
+   Faites jouer tous les joueurs en terminant un tour.
+   Obtenez le classement des actifs des joueurs.
+Simulez quelques tours jusqu'à ce qu'il ne reste qu'un joueur.
+
+
+\subsection{Variantes}
+Redémarrez le jeu en inventant les conditions initiales selon différents
+"Positions idéologiques", et voyez leur impact sur la simulation du jeu. pour
+exemple:
+\begin{itemize}
+  \item NeoLiberal: Certains joueurs avec beaucoup d'argent et d'autres avec peu, un état avec
+mesures antitrust légères.
+  \item Socialiste: Tous les joueurs avec le même argent de départ, beaucoup de taxes.
+  \item Capitaliste: tous les joueurs agressifs, pourcentages de profit élevés, plus élevés
+ratio d'investissement.
+  \item Progressiste : plus de joueurs, des lois antitrust strictes
+combiné avec des subventions, des pourcentages de profit modérés.
+  \item l'Europe apres Covid-19 : (au choix de chacun).
+\end{itemize}
+\end{document}
+

@@ -1,0 +1,118 @@
+\usepackage{hyperref}
+\author{
+        Bragagnolo, Santiago
+}
+\title{TP GIS4 - Anti-monopoly 2 }
+\date{\today}
+ 
+\documentclass[12pt]{article}
+ 
+\begin{document}
+\maketitle
+Cet exercise est base sur un exercise propose par le cour de Paradigmes de programation, au UTN, Argentine .
+
+\section{Introduction}
+Vu le grand succès de la première version de Antimonopoly, il a été décidé de compliquer la
+règles du jeu afin de le rendre encore plus divertissant. En particulier,
+ajouts suivants:
+
+
+\section{Des nouveaux investissements}
+Dans la deuxième version du jeu, des investissements dans l'immobilier et les services de la communication sont ajoutés.
+
+
+
+
+\begin{itemize}
+    \item Services de communication. La première fois que quelqu'un tombe dans l'un de ces
+Casilleros paie le loyer correspondant comme tout investissement. La deuxième fois
+ce joueur tombe dans le casier paie le double de ce qui est indiqué, la troisième fois triple
+et ainsi de suite.
+
+    \item L'immobilier. Comme tous les investissements, ils ont une valeur d'achat et peuvent être
+un joueur ou être entre les mains de l'Etat. Ils représentent des terrains sur le
+qui peuvent être construits et ainsi augmenter leur valeur et les revenus qu'ils produisent.
+    \begin{itemize}
+        \item Tant que rien d'autre n'est construit sur eux, ils sont comme des investissements
+commun.
+        \item Le joueur qui détient l'investissement, lorsqu'il tombe dans la boîte de son
+investissement, vous pouvez choisir de construire et donc d'augmenter son investissement.
+        \item Par conséquent, le joueur qui tombe dans un de ces investissements, s'il y a
+constructions supplémentaires, vous devez payer un loyer plus élevé.
+        \item Les possibilités de construction sont:
+            \begin{itemize}
+                \item Département: a une valeur équivalente à la moitié de la valeur du
+                terrain. Il génère un revenu de 10\% de la valeur totale de l'investissement.
+                Entre 1 et 4 appartements peuvent être construits sur un seul terrain.
+                \item Bâtiment: il a une valeur égale à celle du terrain. Produit un revenu de
+                40\% de la valeur totale de l'investissement. Vous pouvez créer un seul
+                construire sur un terrain.
+            \end{itemize}
+        \item S'il a plusieurs constructions sur un terrain, la valeur de l'investissement
+et le montant du benefit est calculé comme la somme de tous.
+        \item Les décisions concernant ces investissements dépendent du style de jeu
+chaque joueur:
+            \begin{itemize}
+                \item Prudent: les mêmes conditions que pour tout investissement, mais
+Il construit également des appartements d'abord, un à la fois, et
+lorsque vous avez les quatre départements, vous pouvez investir dans la construction
+un édifice.
+                \item Agressif: construisez tout ce que vous pouvez en une seule fois.
+            \end{itemize}
+
+\end{itemize}
+
+
+
+
+
+
+\section{Style de joueur}
+
+    Le style de jeu d'un joueur peut varier tout au long du jeu et peut être intégré
+de nouveaux styles.
+
+\section{Cartes Fortune}
+
+Cartes Fortune
+Dans le jeu, il y a une pile de cartes, indiquant les situations qui affectent
+en quelque sorte à un joueur (et non à un autre joueur).
+ Quand un joueur tombe dans un casier "Fortune", il doit prendre la première carte de la pile et faites ce
+  qu'on vous dit de faire. 
+  Mettez ensuite la carte sous la pile. 
+  Par exemple, ils peuvent indiquer que le joueur avance d'un nombre de casiers, 
+  qu'il doit paier ou gagner de l'argent ou qu'il doit éliminér un investissement.
+
+
+Requerimientos
+    Definir un tablero incluyendo los nuevos casilleros.
+    Realizar las mismas funcionalidades de la primera versión del Monopoly, teniendo
+en cuenta las nuevas indicaciones.
+    Definir un nuevo estilo de jugador inventando sus características. Hacer que un
+determinado momento algunos jugadores cambien su estilo de juego por otro y
+que el juego continúe.
+    Probar también alguna de las variantes indicadas en la primera parte, con las
+nuevas indicaciones.
+
+\section{Exigences du projet}
+     Définissez un plateau de jeu incluant les nouvelles cases.
+
+     Effectuer les mêmes fonctionnalités de la première version de AntiMonopoly, en prenant
+    en compte les nouvelles indications:
+    \paragraph{ Définissez un nouveau style de joueur} en inventant ses caractéristiques. 
+    \paragraph{ Faites que au moment donné}, certains joueurs changent de style de jeu pour un autre et
+laissez le jeu continuer.
+    \paragraph {Essayez} également certaines des variantes indiquées dans la première partie, avec le
+nouvelles indications.
+
+
+\section{Bonus} 
+    \subsection{Dynamique du jeu}
+Développez automatiquement toutes les dynamiques de jeu, de sorte qu'avec envoyer un message initial, 
+tout le jeu continue jusqu'à ce qu'il y ait un seul gagnant. 
+    Pour cela, entre autres choses, le dé doit être modélisé de manière à comportement aléatoire. 
+    Il est recommandé de vous informer d'une manière ou d'une autre sur les principaux événements du jeu ou suspendre l'exécution.
+
+
+\end{document}
+
