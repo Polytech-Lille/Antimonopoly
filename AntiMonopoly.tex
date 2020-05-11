@@ -79,15 +79,19 @@ au jeu en marchant sur le plateau, mais interagit avec tous les joueurs de diff�
     \subsection{Case}
     Les cases peuvent être:
     \begin{itemize}
-        \item Investissement: si l'investissement est disponible, le joueur décide s'il veut le prendre
-    lui ou laissez passer. Si l'investissement provient déjà d'un autre joueur, qui tombe dans la boîte, vous devez lui payer une somme d'argent basée sur la valeur de l'investissement\an{pas compris cette phrase}.
+        \item Investissement: si l'investissement est disponible, 
+        	le joueur décide s'il veut le prendre lui ou laissez passer. 
+	Si l'investissement est déjà approprie par un autre joueur, qui tombe dans la boîte, 
+	vous devez lui payer une somme d'argent proportion de la valeur de l'investissement.\an{pas compris cette phrase}\spb{TEXTE MODIFIE}.
     
         \item Loi antitrust: oblige le joueur à céder tous ses investissements
-    qu'il possède et qui dépassent le maximum fixé par l'État. Ces investissements reviennent à l'Etat, qui paie le joueur la moitié de leur prix, et ils restent
-    à nouveau disponible\an{ca veut dire quoi qu'il reste a nouveau dispo}.
+    qu'il possède et qui dépassent le maximum fixé par l'État. 
+    Ces investissements reviennent à l'Etat, qui paie le joueur la moitié de leur prix. 
+    Une fois entre les mains de l'état, ils sont disponibles pour les joueurs pour ce l'approprier. 
+    \an{ca veut dire quoi qu'il reste a nouveau dispo}.\spb{TEXTE MODIFIE}
         \item  Bureau Finances publiques : oblige le joueur à payer à l'État un certain pourcentage de ses
-    capitaux propres, au cas où il dépasserait une certaine valeur. Selon quelle taxe
-    traiter, ces valeurs changent (impôt sur le revenu, impôt foncier personnel, etc.)\an{pas compris la dernière phrase}
+    capitaux propres, au cas où il dépasserait une certaine valeur. Chaque taxe se calcule comme un percentage du patrimoine du joueur.
+    Le percentage de chaque type d'impôt (impôt sur le revenu, impôt foncier personnel, etc.) est different. \an{pas compris la dernière phrase}\spb{TEXTE MODIFIE}
         \item Subvention: Le joueur reçoit de l'État le montant indiqué dans la case.
         \item Repos: C'est une case vide dans laquelle rien ne se passe. En particulier, la sortie
     en fait partie.
@@ -96,11 +100,11 @@ au jeu en marchant sur le plateau, mais interagit avec tous les joueurs de diff�
     \subsection{Investissements}
 Les investissements sont le principal moyen pour les joueurs de gagner de l'argent. Initialement
 l'\'Etat possède tous les investissement qui ont chacun un prix de référence, correspondant au
-montant à payer par le joueur lorsqu'il tombe dans la boîte\an{c'est quoi la boite} et décide d'assumer ledit
+montant à payer par le joueur lorsqu'il tombe dans le cassier\an{c'est quoi la boite} et décide d'assumer ledit
 investissement.
 Chaque investissement génère un revenu calculé en pourcentage du prix de
-référence, qui est facturé au joueur qui tombe dans la boîte\an{pas compris}. Prix et pourcentages de
-les bénéfices d'investissement sont complètement arbitraires.
+référence, qui est chargé au joueur qui tombe dans le cassier \spb{TEXTE MODIFIE}\an{pas compris}. 
+Prix et pourcentages de les bénéfices d'investissement sont complètement arbitraires.
 
     \subsection{Style des joueurs}
 
@@ -135,8 +139,7 @@ Distribuer quantités et valeurs des cases d'une manière que vous considérez c
 
 \subsection{Simulation}
 
- Dans la method \texttt{main} effectuez les étapes suivantes, en choisissant arbitrairement la valeur des dés, 
- parmi façon de voir les différentes variantes\an{pas compris cette derniere partie de phrase} :
+ Dans la method \texttt{main} effectuez les étapes suivantes, en choisissant arbitrairement la valeur des dés.
  \begin{itemize}
 \item   Localisez tous les joueurs à la sortie.
 \item    Demander à un joueur d'avancer un certain nombre de cases et de faire l'action correspondante.
