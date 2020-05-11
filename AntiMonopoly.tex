@@ -21,10 +21,10 @@
 %Dessin
 \usepackage{tikz}
 \usepackage{verbatim}
-
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-
+\usepackage{subfigure}
  \input{macros}
  
 \author{
@@ -39,6 +39,14 @@
 Cet exercise est basé sur un exercice proposé dans le cour de Paradigmes de programmation, à l'UTN, Argentine .
 
 \section{Introduction}
+
+\begin{figure}
+\includegraphics[width=15cm,height=15cm,keepaspectratio]{figures/board.pdf}
+\caption{Exemple de tableau de jeu}
+\end{figure}
+
+
+
 
 Vous souhaitez implémenter un jeu de style Monopoly dans lequel les joueurs marchent sur un chemin où
 ils doivent prendre des décisions d'investissement et faire certaines actions, afin d'augmenter votre
@@ -77,13 +85,14 @@ au jeu en marchant sur le plateau, mais interagit avec tous les joueurs de diff�
     Le jeu est également terminé s'il reste un seul joueur ou si l'État échoue.
     
     \subsection{Case}
-    Les cases peuvent être:
+    
+        
+        Les cases peuvent être:
     \begin{itemize}
         \item Investissement: si l'investissement est disponible, 
         	le joueur décide s'il veut le prendre lui ou laissez passer. 
 	Si l'investissement est déjà approprie par un autre joueur, qui tombe dans la boîte, 
 	vous devez lui payer une somme d'argent proportion de la valeur de l'investissement.\an{pas compris cette phrase}\spb{TEXTE MODIFIE}.
-    
         \item Loi antitrust: oblige le joueur à céder tous ses investissements
     qu'il possède et qui dépassent le maximum fixé par l'État. 
     Ces investissements reviennent à l'Etat, qui paie le joueur la moitié de leur prix. 
@@ -96,6 +105,24 @@ au jeu en marchant sur le plateau, mais interagit avec tous les joueurs de diff�
         \item Repos: C'est une case vide dans laquelle rien ne se passe. En particulier, la sortie
     en fait partie.
     \end{itemize}
+
+
+
+
+    
+    \begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/investissement.pdf}} 
+    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/antitrust.pdf}} 
+    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/taxe.pdf}}
+      \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/rienfaire.pdf}}
+
+   
+    \caption{(a) Investissment (b) Loi antitrust (c) finances publiques (d) subvention (e) activite non comercial}
+    \label{fig:foobar}
+\end{figure}
+
+
 
     \subsection{Investissements}
 Les investissements sont le principal moyen pour les joueurs de gagner de l'argent. Initialement
