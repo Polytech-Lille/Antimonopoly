@@ -74,121 +74,107 @@ différents joueurs. Il a des ressources financières. L'État ne participe pas
 au jeu en marchant sur le plateau, mais interagit avec tous les joueurs de différentes manières.
 
     \subsection{La dynamique de jeu}
-    Initialement, tous les joueurs sont placés dans la case \textbf{sortie}. À tour de rôle, chacun
-des joueurs lance un dé et avance d'où il se trouve d'autant de pas que l'indique le
-dé, arrivant ainsi à une nouvelle case. Là, le joueur doit suivre les instructions
-qui sont indiquées dans la case et prend les décisions économiques qu'il juge appropriées.
+    Initialement, tous les joueurs sont placés dans la case \textbf{sortie}. À tour de rôle, chacun lance
+un \textbf{dé} et avance d'où il se trouve d'autant de cases que l'indique le
+dé. Là, le joueur doit suivre les instructions
+indiquées dans la case et prend les décisions économiques qu'il juge appropriées.
 De cette façon, tous les joueurs avancent à travers le plateau et font leur
 entreprise. Comme l'itinéraire est circulaire, il n'y a pas de point d'arrivée prédéterminé,
-raison pour laquelle ils continuent à tourner jusqu'à ce que l'on souhaite mettre fin au jeu.
-Le jeu est également terminé s'il reste un seul joueur ou si l'État échoue.
+raison pour laquelle ils continuent à tourner jusqu'à ce que l'on souhaite mettre fin au jeu. \cfd{Préciser si un seul joueur peut décider d'y mettre fin ou si tous les joueurs doivent être d'accord.}
+Le jeu est également terminé s'il ne reste qu'un seul joueur ou si l'État échoue.
     
     \subsection{Case}
-    
-        
-        Les cases peuvent être:
+        Il existe dans ce jeu différent type de cases. Voici leur particularités:
     \begin{itemize}
-        \item Investissement: si l'investissement est disponible, 
-        	le joueur décide s'il veut le prendre lui ou laissez passer. 
-	Si l'investissement est déjà approprie par un autre joueur, qui tombe dans la boîte, 
-	vous devez lui payer une somme d'argent proportion de la valeur de l'investissement.\an{pas compris cette phrase}\spb{TEXTE MODIFIE}.
-        \item Loi antitrust: oblige le joueur à céder tous ses investissements
+        \item \textbf{Investissement}: Si l'investissement est déjà possédé par un autre joueur, vous devez lui payer une somme d'argent proportion de la valeur de l'investissement.\an{pas compris cette phrase}\spb{TEXTE MODIFIE}\cfd{J'ai remodifié pour le rendre plus clair}.
+        Si l'investissement est disponible, le joueur décide s'il veut le prendre ou le laissez passer. 
+	
+        \item \textbf{Loi antitrust}: Oblige le joueur à céder tous les investissements
     qu'il possède et qui dépassent le maximum fixé par l'État. 
     Ces investissements reviennent à l'Etat, qui paie le joueur la moitié de leur prix. 
-    Une fois entre les mains de l'état, ils sont disponibles pour les joueurs pour ce l'approprier. 
-    \an{ca veut dire quoi qu'il reste a nouveau dispo}.\spb{TEXTE MODIFIE}
-        \item  Bureau Finances publiques : oblige le joueur à payer à l'État un certain pourcentage de ses
-    capitaux propres, au cas où il dépasserait une certaine valeur. Chaque taxe se calcule comme un percentage du patrimoine du joueur.
-    Le percentage de chaque type d'impôt (impôt sur le revenu, impôt foncier personnel, etc.) est different. \an{pas compris la dernière phrase}\spb{TEXTE MODIFIE}
-        \item Subvention: Le joueur reçoit de l'État le montant indiqué dans la case.
-        \item Repos: C'est une case vide dans laquelle rien ne se passe. En particulier, la sortie
-    en fait partie.
+    Une fois entre les mains de l'état, ces investissements deviennent de nouveau disponibles si un joueur rentre dans cette case. 
+    \an{ca veut dire quoi qu'il reste a nouveau dispo}.\spb{TEXTE MODIFIE}\cfd{J'ai remodifié pour le rendre plus clair}
+        \item  \textbf{Bureau Finances publiques}: Oblige le joueur à payer à l'État un pourcentage de ses
+    capitaux propres, au cas où ils dépasseraient une certaine valeur. Chaque taxe se calcule comme un pourcentage du patrimoine du joueur.
+    Le pourcentage de chaque type d'impôt (impôt sur le revenu, impôt foncier personnel, etc.) est différent. \an{pas compris la dernière phrase}\spb{TEXTE MODIFIE}\cfd{J'ai remodifié pour le rendre plus clair}
+        \item \textbf{Subvention}: Le joueur reçoit de l'État le montant indiqué dans la case.
+        \item \textbf{Repos}: C'est une case vide dans laquelle rien ne se passe. La \textbf{sortie} en fait partie.
     \end{itemize}
-
-
-
-
     
     \begin{figure}
     \centering
     \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/investissement.pdf}} 
     \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/antitrust.pdf}} 
     \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/taxe.pdf}}
+    \cfd{Il manque la subvention}
       \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/rienfaire.pdf}}
 
    
-    \caption{(a) Investissment (b) Loi antitrust (c) finances publiques (d) subvention (e) activite non comercial}
+    \caption{(a) Investissment (b) Loi antitrust (c) Finances publiques (d) Subvention (e) Activite non comercial}
     \label{fig:foobar}
 \end{figure}
 
 
 
     \subsection{Investissements}
-Les investissements sont le principal moyen pour les joueurs de gagner de l'argent. Initialement
-l'\'Etat possède tous les investissement qui ont chacun un prix de référence, correspondant au
-montant à payer par le joueur lorsqu'il tombe dans le cassier\an{c'est quoi la boite} et décide d'assumer ledit
-investissement.
+	Les \textbf{investissements} sont le principal moyen pour les joueurs de gagner de l'argent. Initialement
+l'\'Etat possède tous les investissements. Ils ont chacun un prix de référence, correspondant au
+montant à payer par le joueur lorsqu'il tombe dans la case correspondant à celui-ci et décide de l'assumer.
 Chaque investissement génère un revenu calculé en pourcentage du prix de
-référence, qui est chargé au joueur qui tombe dans le cassier \spb{TEXTE MODIFIE}\an{pas compris}. 
-Prix et pourcentages de les bénéfices d'investissement sont complètement arbitraires.
+référence, qui est chargé au joueur qui tombe dans la case \spb{TEXTE MODIFIE}\an{pas compris}\cfd{Ce n'est pas clair. Je n'ai pas compris si le pourcentage à payer est sur le capital du joueur ou sur le prix de l'investissement}. 
+Le prix et pourcentages de les bénéfices d'investissement sont arbitraires.
 
     \subsection{Style des joueurs}
-
     Le fait qu'un joueur accepte ou non de conserver un investissement dépend en premier lieu 
-    du fait qu'il a assez d'argent, mais aussi de son style de jeu. 
-    Certains styles sont les suivants :
+    de s'il a assez d'argent, mais aussi d'un style de jeu. associé à ce joueur. 
+    Il existe différents styles de jeu qui sont les suivants :
         \begin{itemize}
-           \item Prudent: le joueur accepte l'investissement que s'il a moins d'un certain montant 
+           \item \textbf{Prudent}: Le joueur accepte l'investissement que s'il a moins d'un certain montant 
            d'investissements et que la valeur du nouvel investissement représente moins de 20 \% de ses
            actifs actuels.
-           \item  Agressif: le joueur achete tout.
+           \item  \textbf{Agressif}: Le joueur achète tout.
         \end{itemize}
 
     Finalement, si un joueur est obligé de se séparer de certains investissements, 
-        il les choisit en fonction de son style de jeu:
+    il les choisit en fonction de son style de jeu:
         \begin{itemize}
-            \item Prudent: ceux qui ont les prix les plus élevés.
-            \item Agressif: le moins cher.
+            \item \textbf{Prudent}: Il choisit en priorité le plus cher.
+            \item \textbf{Agressif}: Il choisit en priorité le moins cher.
         \end{itemize}
-
-
         
 \section{Exigences du projet}
-Sur la base de l'approche générale du jeu, 
-l'implémentation demandée doit comprendre :
+Sur la base de l'approche générale du jeu, l'implémentation demandée doit comprendre :
 
 \subsection{Définition initiale}
 Créez un plateau de jeu avec plusieurs cases (au moins 10), des joueurs (au moins 2, un de
-chaque style de jeu) et l'État. Tout définir prix, pourcentages, montants d’argent et
-valeurs initiales nécessaires. 
-Distribuer quantités et valeurs des cases d'une manière que vous considérez comme équilibrée.
+chaque style de jeu) et l'État. Il faut définir les prix, pourcentages, capitaux et valeurs initiales nécessaires. 
+Il faut distribuer les quantités et valeurs des cases d'une manière que vous considérez comme équilibrée.
 
 \subsection{Simulation}
-
- Dans la method \texttt{main} effectuez les étapes suivantes, en choisissant arbitrairement la valeur des dés.
+ Dans le \texttt{main}, effectuez les étapes suivantes, en choisissant arbitrairement la valeur des dés:
  \begin{itemize}
 \item   Localisez tous les joueurs à la sortie.
 \item    Demander à un joueur d'avancer un certain nombre de cases et de faire l'action correspondante.
-\item    Vérifier la situation financière du joueur
+\item    Vérifier la situation financière du joueur.
 \item    Faites jouer tous les joueurs en terminant un tour.
 \item    Obtenez le classement des actifs des joueurs.
 \item Simulez quelques tours jusqu'à ce qu'il ne reste qu'un joueur.
 \end{itemize}
 
 
-\subsection{Variantes}
+\subsection{Variantes} \cfd{À préciser si c'est requis ou si c'est du bonus}
 Redémarrez le jeu en inventant les conditions initiales selon différentes
 "Positions idéologiques", et voyez leur impact sur la simulation du jeu. Par
 exemple :
 \begin{itemize}
-  \item NeoLiberal~: Certains joueurs avec beaucoup d'argent et d'autres avec peu, un état avec quelques
+  \item \textbf{NeoLiberal}~: Certains joueurs avec beaucoup d'argent et d'autres avec peu, un état avec quelques
 mesures antitrust légères.
-  \item Socialiste~: Tous les joueurs avec le même argent de départ, beaucoup de taxes.
-  \item Capitaliste~: tous les joueurs agressifs, pourcentages de profit élevés, plus élevés
+  \item \textbf{Socialiste}~: Tous les joueurs avec le même argent de départ, beaucoup de taxes.
+  \item \textbf{Capitaliste}~: tous les joueurs agressifs, pourcentages de profit élevés, plus élevés
 ratio d'investissement.
-  \item Progressiste : plus de joueurs, des lois antitrust strictes
+  \item \textbf{Progressiste} : plus de joueurs, des lois antitrust strictes
 combiné avec des subventions, des pourcentages de profit modérés.
-  \item l'Europe après le Covid-19 : (au choix de chacun).
+  \item \textbf{l'Europe après le Covid-19} : (au choix de chacun).
 \end{itemize}
 \end{document}
 
