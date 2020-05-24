@@ -36,7 +36,7 @@
  
 \begin{document}
 \maketitle
-Cet exercise est basé sur un exercice proposé dans le cour de Paradigmes de programmation, à l'UTN, Argentine .
+\emph{Cet exercise est basé sur un exercice proposé dans le cour de Paradigmes de programmation, à l'UTN, Argentine.}
 
 \section{Introduction}
 
@@ -47,42 +47,41 @@ Cet exercise est basé sur un exercice proposé dans le cour de Paradigmes de pr
 
 
 
-
-Vous souhaitez implémenter un jeu de style Monopoly dans lequel les joueurs marchent sur un chemin où
-ils doivent prendre des décisions d'investissement et faire certaines actions, afin d'augmenter votre
-patrimoine. Attention à ne pas trop investir, parce que les lois antitrust peut vous obliger à
-distribuer votre richesse.
+	Vous souhaitez implémenter un jeu du style \emph{Monopoly} dans lequel les joueurs cherchent
+à augmenter leur patrimoine en marchant sur un chemin où ils doivent prendre des décisions 
+d'investissement et faire certaines actions. Attention toutefois à ne pas trop investir, car 
+les lois antitrust peuvent vous obliger à distribuer votre richesse.
 
 
 \section{Caractéristiques du jeu}
 
     \subsection{Plateau du jeu}
-    La Plateau est constitué d'un chemin circulaire composé d'un certain nombre de cases,
-dans chacune desquelles il y a des indications. Il y a une case marquée "sortie" qui
+    Le \textbf{plateau} est constitué d'un chemin circulaire composé de \textbf{cases},
+dans chacune desquelles il y a des indications. Une case marquée \textbf{sortie}
 indique le point de départ du jeu.
 
-    \subsection{Des Joueurs}
-    Il peut y avoir autant de joueurs que souhaité. Chaque joueur a un certain
-montant initial d'argent. Au fur et à mesure que le jeu progresse, chacun des joueurs augmente
-ou réduit son argent, selon les décisions d'investissement que chacun prend ou d'autres
-circonstances qui vous viennent à l’esprit. Les capitaux propres d'un joueur correspondent à
-son argent plus l'évaluation de tous les investissements qu'il a. Si un joueur perd tous ses capitaux qu'il ne peut pas continuer à jouer.
-
+    \subsection{Joueurs}
+    Il peut y avoir autant de \textbf{joueurs} que souhaité. Chaque joueur a un
+montant d'argent initial. Au fur et à mesure que le jeu progresse, chacun des joueurs accroit
+ou décroit son argent, selon les décisions d'investissement qu'ils prennent ou d'autres
+circonstances. Les capitaux propres d'un joueur correspondent à
+son argent plus l'évaluation de tous les investissements qu'il possède.
+Si un joueur perd tous ses capitaux il a perdu: il ne peut pas continuer à jouer.
     
     \subsection{L'\'Etat}
     L'\'Etat est un acteur social dont la fonction principale est de réguler l'activité économique des
-différents joueurs. Il a une certaine quantité de ressources financières.  L'Etat ne participe pas
+différents joueurs. Il a des ressources financières. L'État ne participe pas
 au jeu en marchant sur le plateau, mais interagit avec tous les joueurs de différentes manières.
 
     \subsection{La dynamique de jeu}
-    Initialement, tous les joueurs sont placés dans la case "sortie". À tour de rôle, chacun
-    des joueurs lance un dé et avance d'où il se trouve d'autant de pas que l'indique le
-    dé, arrivant ainsi à une nouvelle case. Là, le joueur doit suivre les instructions
-    qui sont indiquées dans la case et prend les décisions économiques qu'il juge appropriées.
-    De cette façon, tous les joueurs avancent à travers le plateau et font leur
-    entreprise. Comme l'itinéraire est circulaire, il n'y a pas de point d'arrivée prédéterminé,
-    raison pour laquelle ils continuent à tourner jusqu'à ce que l'on souhaite mettre fin au jeu.
-    Le jeu est également terminé s'il reste un seul joueur ou si l'État échoue.
+    Initialement, tous les joueurs sont placés dans la case \textbf{sortie}. À tour de rôle, chacun
+des joueurs lance un dé et avance d'où il se trouve d'autant de pas que l'indique le
+dé, arrivant ainsi à une nouvelle case. Là, le joueur doit suivre les instructions
+qui sont indiquées dans la case et prend les décisions économiques qu'il juge appropriées.
+De cette façon, tous les joueurs avancent à travers le plateau et font leur
+entreprise. Comme l'itinéraire est circulaire, il n'y a pas de point d'arrivée prédéterminé,
+raison pour laquelle ils continuent à tourner jusqu'à ce que l'on souhaite mettre fin au jeu.
+Le jeu est également terminé s'il reste un seul joueur ou si l'État échoue.
     
     \subsection{Case}
     
