@@ -43,6 +43,7 @@
 \begin{figure}
 \includegraphics[width=15cm,height=15cm,keepaspectratio]{figures/board.pdf}
 \caption{Exemple de tableau de jeu}
+\label{fig:tableau}
 \end{figure}
 
 	Vous souhaitez implémenter la simulation d'un jeu du style \emph{Monopoly} dans lequel les joueurs cherchent
@@ -57,7 +58,9 @@ les lois antitrust peuvent vous obliger à distribuer votre richesse.
     Le \textbf{plateau} est constitué d'un chemin circulaire composé de \textbf{cases},
 dans chacune desquelles il y a des indications. Une case marquée \textbf{sortie}
 indique le point de départ du jeu.
-
+	Au moment de construir un plateau, pourrais soit utiliser les configurations dans l'image \autoref{fig:tableau}, ou soit utiliser des configurations inventé pour vous même. 
+	En tout case le bout de la construction d'un plateau n'est pas réussir a construire un tableau bien balancé (au sense de jeu), sinon a avoir suffisamment des cases pour pouvoir simuler le jeu.
+	
     \subsection{Joueurs}
    
     Il peut y avoir autant de \textbf{joueurs} que souhaité. Chaque joueur a un
@@ -89,6 +92,22 @@ En s'agissant d'une simulation, la personne a decider s'on souhaite mettre fin a
 
     
     \subsection{Case}
+  
+    	Comme on peu voir dans la \autoref{fig:cases}
+	  \begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/investissement.pdf}} 
+    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/antitrust.pdf}} 
+    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/taxe.pdf}}
+       \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/subvention.pdf}}
+      \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/rienfaire.pdf}}
+
+   
+    \caption{(a) Investissment (b) Loi antitrust (c) Finances publiques (d) Subvention (e) Activite non comercial}
+    \label{fig:cases}
+\end{figure}
+
+
         Il existe dans ce jeu différent type de cases. Voici leur particularités:
     \begin{itemize}
         \item \textbf{Investissement}: L'investissement est un cassier que rapport de benefits au propriétaire privé.
@@ -107,30 +126,16 @@ En s'agissant d'une simulation, la personne a decider s'on souhaite mettre fin a
     Dans la même configuration, si un joueur a 3 investissements par 300000 (un total de 900000), il doive laisser partir deux investissements. 
     Une fois entre les mains de l'état, ces investissements deviennent de nouveau disponibles,  
     en habilitant le future achat. 
-    
-    \an{ca veut dire quoi qu'il reste a nouveau dispo}.\spb{TEXTE MODIFIE}\cfd{J'ai remodifié pour le rendre plus clair}
+
         \item  \textbf{Bureau Finances publiques}: Oblige le joueur à payer à l'État un pourcentage de ses
     capitaux propres, au cas où ils dépasseraient une certaine valeur. Chaque taxe se calcule comme un pourcentage du patrimoine du joueur.
     La seule difference entre les types d'impôts, hors du nom, est le pourcentage. 
-    Exemples: impôt sur le revenu / 25\% du patrimoine, impôt foncier / 10\% du patrimoine, etc. \an{pas compris la dernière phrase}\spb{TEXTE MODIFIE}\cfd{J'ai remodifié pour le rendre plus clair}
+    Exemples: impôt sur le revenu / 25\% du patrimoine, impôt foncier / 10\% du patrimoine, etc.
         \item \textbf{Subvention}: Le joueur reçoit de l'État le montant indiqué dans la case.
         \item \textbf{Repos}: C'est une case vide dans laquelle rien ne se passe. La \textbf{sortie} en fait partie.
     \end{itemize}
     
-    \begin{figure}
-    \centering
-    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/investissement.pdf}} 
-    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/antitrust.pdf}} 
-    \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/taxe.pdf}}
-    \cfd{Il manque la subvention}
-      \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/rienfaire.pdf}}
-
-   
-    \caption{(a) Investissment (b) Loi antitrust (c) Finances publiques (d) Subvention (e) Activite non comercial}
-    \label{fig:foobar}
-\end{figure}
-
-
+    
 
     \subsection{Investissements}
 	Les \textbf{investissements} sont le principal moyen pour les joueurs de gagner de l'argent. 
@@ -149,58 +154,106 @@ En s'agissant d'une simulation, la personne a decider s'on souhaite mettre fin a
 	
     \subsection{Style des joueurs}
     En s'agissant d'une simulation, ou les decisions de joueur sont pris pour le programme, on doive définir des profiles de joueurs.
-    Les profiles de joueur proposé sont: \textbf{aggresif} et \textbf{prudent}
+    Les profiles de joueur proposé sont: \textbf{agressif} et \textbf{prudent}
     
-    Le fait qu'un joueur accepte ou non de conserver un investissement dépend en premier lieu 
-    de s'il a assez d'argent, mais aussi d'un style de jeu. associé à ce joueur. 
-    Il existe différents styles de jeu qui sont les suivants :
-        \begin{itemize}
-           \item \textbf{Prudent}: Le joueur accepte l'investissement que s'il a moins d'un certain montant 
-           d'investissements et que la valeur du nouvel investissement représente moins de 20 \% de ses
-           actifs actuels.
-           \item  \textbf{Agressif}: Le joueur achète tout.
-        \end{itemize}
+   Chaque type de joueur donc vas prendre decisions différemment  
+   
+   \paragraph {Le joueur Agressif}  va essayer de tout prendre pour lui le plus vite possible. 
+   \begin{itemize}
+   	\item En rapport aux investissements: S'il a de l'argent suffisaient,  Il achète tout investissement ou il tombe
+	\item En rapport aux loi antitrust: Au moment de choisir qu'investissement se faire exproprier, il prendre les moins chers.
+   \end{itemize}
+   
+  
+   \paragraph {Le joueur Prudent}  va de marcher sur de solide, en prennent des decisions un peu plus informées . 
+    \begin{itemize}
+   	\item En rapport aux investissements: Il ne prendre jamais plus que une quantité configurable maximale des investissements.  Et il n'achète rien plus cher qu'un 20\% de son patrimoine. 
+	\item En rapport aux loi antitrust: Au moment de choisir qu'investissement se faire exproprier, il prendre les plus chers.
+   \end{itemize}
 
-    Finalement, si un joueur est obligé de se séparer de certains investissements, 
-    il les choisit en fonction de son style de jeu:
-        \begin{itemize}
-            \item \textbf{Prudent}: Il choisit en priorité le plus cher.
-            \item \textbf{Agressif}: Il choisit en priorité le moins cher.
-        \end{itemize}
+
+
+
+\section{Simulation}
+
+ Pour jouer ce jeu, on va le faire en mode simulation.
+ 
+ La simulation comprendre trois phases
+ 
+ \begin{description} 
+ 	\item [Configuration] L'utilisateur configure la simulation
+	\item [Jeu] Le jeu démarre. 
+	\item [Communication des résultats] On communique les résultats du jeu  
+\end{description}
+ 
+ 
+ \paragraph{La configuration} S'agit du moment ou le joueur doive exprimer que type de simulation est-ce qu'il veut. 
+	Avec un de console interactive on va laisser  l'utilisateur définir la quantité des joueurs pour chaque type (Agressif / Prudent), la quantité d'argent a repartir entre les joueurs, la quantité d'argent pour l'État et le profile de simulation. 
+ 
+  Chaque profile de simulation define quel tableau utiliser, comment partager l'argent entre les joueurs, les pourcentages d'impôts, l'argent minimal pour payer impôts , les pourcentages d'utilité des investissements et le patrimoine maximale pour la loi antitrust pour se appliquer. 
+  Le joueur doive être capable de choisir entre au moins deux du suivants profiles: 
+  \begin{itemize}
+  	\item \textbf{NeoLiberal}~: Certains joueurs avec beaucoup d'argent et d'autres avec peu, un état avec quelques
+mesures antitrust légères.
+  	\item \textbf{Socialiste}~: Tous les joueurs avec le même argent de départ, beaucoup de taxes.
+  	\item \textbf{Capitaliste}~: tous les joueurs agressifs, pourcentages de profit élevés, plus élevés
+ratio d'investissement.
+  	\item \textbf{Progressiste} : plus de joueurs, des lois antitrust strictes
+combiné avec des subventions, des pourcentages de profit modérés.
+  	\item \textbf{l'Europe après le Covid-19} : (au choix de chacun).
+\end{itemize}
+ 
+ 
+  \paragraph{Le jeu} ou la simulation bien compris. 
+  	Une fois on a tout l'information, faire jouer les joueurs une fois par tour de rôle.
+	
+	 En utilisent la generation des numéros aléatoires pour representer le dé, on doive faire jouer chaque jouer et informer qu'il a fait.
+	 
+	 Une fois que le tour de rôle est fini (tous les joueurs ont joue) on procède a verifier si le jeu est fini. Si le jeu est fini, on doive sauter a la dernière phase. 
+	 
+	 Si le jeu n'a pas finit, on doive demander a l'utilisateur s'il veut continuer la simulation. Si oui, on procède au suivant tour de rôle, sinon, on saute a la dernière phase.
+	
+  
+  \paragraph{La Communication des résultats} comprehend la raison du fin de jeu, la declaration du gagnant, l'impression  du ranking des joueurs et l'impression de l'état de l'État. 
+  	Par exemple
+\begingroup\makeatletter\def\@currenvir{verbatim}
+\verbatim
+	  l'Etat a échoue! 
+	
+	  Gagnant Jouer 1 
+	  ================
+	  	
+	   #     Nom            Investissements   Liquide     Patrimoine
+	   1 -   Joueur 1       6000              1010        7010
+	   1 -   Joueur 2       6000              1010        7010
+	   1 -   Joueur 3       6000              1010        7010
+	   ==================================================
+   Etat - 
+        Investissements: 0
+        Liquide: 0
+\end{verbatim}
+   
+
+
         
 \section{Exigences du projet}
-Sur la base de l'approche générale du jeu, l'implémentation demandée doit comprendre :
 
-\subsection{Définition initiale}
-Créez un plateau de jeu avec plusieurs cases (au moins 10), des joueurs (au moins 2, un de
-chaque style de jeu) et l'État. Il faut définir les prix, pourcentages, capitaux et valeurs initiales nécessaires. 
-Il faut distribuer les quantités et valeurs des cases d'une manière que vous considérez comme équilibrée.
+	Sur la base de l'approche générale du jeu, l'implémentation demandée doit comprendre la livraison de:
+	
+	\begin{description}
+		\item [Lundi 1/Juin - 5 Points ] La conception logiciel exprimé en UML au debut d'exercice 
+		\item [A livrer a la fin de chaque cours - 3 Points ] Une quantité minimal de 1 tests unitaires par  journée de cours
+		\item [Lundi 8/Juin - 2 Points] Point sur l'implementation, revision de la creation du plateau.
+		\item [Vendredi 19/Juin - 5 Points]  La conception logiciel exprimé en UML a la fin d'exercice, avec une bref explication de la evolution du modele.
+		\item [Lundi 22/Juin - 5 Points] L'implementation complete du simulation 
+	\end{description} 
+		
+	Le cours rendre un maximum de 20 points. 
+	Si vous voulez rajouter des points, vous pouvez demander des points bonus.
+	
+\subsection{ Resume }
 
-\subsection{Simulation}
- Dans le \texttt{main}, effectuez les étapes suivantes, en choisissant arbitrairement la valeur des dés:
- \begin{itemize}
-\item   Localisez tous les joueurs à la sortie.
-\item    Demander à un joueur d'avancer un certain nombre de cases et de faire l'action correspondante.
-\item    Vérifier la situation financière du joueur.
-\item    Faites jouer tous les joueurs en terminant un tour.
-\item    Obtenez le classement des actifs des joueurs.
-\item Simulez quelques tours jusqu'à ce qu'il ne reste qu'un joueur.
-\end{itemize}
+	
 
-
-\subsection{Variantes} \cfd{À préciser si c'est requis ou si c'est du bonus}
-Redémarrez le jeu en inventant les conditions initiales selon différentes
-"Positions idéologiques", et voyez leur impact sur la simulation du jeu. Par
-exemple :
-\begin{itemize}
-  \item \textbf{NeoLiberal}~: Certains joueurs avec beaucoup d'argent et d'autres avec peu, un état avec quelques
-mesures antitrust légères.
-  \item \textbf{Socialiste}~: Tous les joueurs avec le même argent de départ, beaucoup de taxes.
-  \item \textbf{Capitaliste}~: tous les joueurs agressifs, pourcentages de profit élevés, plus élevés
-ratio d'investissement.
-  \item \textbf{Progressiste} : plus de joueurs, des lois antitrust strictes
-combiné avec des subventions, des pourcentages de profit modérés.
-  \item \textbf{l'Europe après le Covid-19} : (au choix de chacun).
-\end{itemize}
 \end{document}
 
