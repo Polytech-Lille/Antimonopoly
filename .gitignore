@@ -265,3 +265,5 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+
+.DS_STORE
