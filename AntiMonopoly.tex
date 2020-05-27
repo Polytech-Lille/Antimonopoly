@@ -54,14 +54,14 @@ les lois antitrust peuvent vous obliger à distribuer votre richesse.
 
 \section{Caractéristiques du jeu}
 
-    \subsection{Plateau du jeu}
+    \subsection{Le plateau du jeu}
     Le \textbf{plateau} est constitué d'un chemin circulaire composé de \textbf{cases},
 dans chacune desquelles il y a des indications. Une case marquée \textbf{sortie}
 indique le point de départ du jeu.
-	Au moment de construir un plateau, pourrais soit utiliser les configurations dans l'image \autoref{fig:tableau}, ou soit utiliser des configurations inventé pour vous même. 
-	En tout case le bout de la construction d'un plateau n'est pas réussir a construire un tableau bien balancé (au sense de jeu), sinon a avoir suffisamment des cases pour pouvoir simuler le jeu.
+Vous pourrez utiliser la configuration présentée dans l'image \autoref{fig:tableau}, ou inventer de nouvelles configurations par vous même. 
+Le but n'est pas de réussir à construire un plateau équilibré, mais d'avoir suffisamment des cases pour pouvoir simuler le jeu et couvrir tous les cas demandés.
 	
-    \subsection{Joueurs}
+    \subsection{Les joueurs}
    
     Il peut y avoir autant de \textbf{joueurs} que souhaité. Chaque joueur a un
 montant d'argent initial. Au fur et à mesure que le jeu progresse, chacun des joueurs accroit
@@ -71,29 +71,53 @@ son argent plus l'évaluation de tous les investissements qu'il possède.
 Si un joueur perd tous ses capitaux il a perdu: il ne peut pas continuer à jouer.
     
     \subsection{L'\'Etat}
+    
     L'\'Etat est un acteur social dont la fonction principale est de réguler l'activité économique des
-différents joueurs. Il a des ressources financières. L'État ne participe pas
-au jeu en marchant sur le plateau, mais interagit avec tous les joueurs de différentes manières.
-
+différents joueurs. Il possède des ressources financières. L'État ne participe pas
+au jeu en marchant sur le plateau, mais interagit avec tous les joueurs comme expliqué plus bas.
 
     \subsection{La dynamique de jeu}
+    
     Initialement, tous les joueurs sont placés dans la case \textbf{sortie}. 
+
+À tour de rôle, chacun lance un \textbf{dé} et avance d'où il se trouve d'autant de cases que l'indique le dé. 
+Le joueur doit ensuite suivre les instructions indiquées dans la case et prend les décisions économiques qu'il juge appropriées.
     
-    À tour de rôle, chacun lance
-un \textbf{dé} et avance d'où il se trouve d'autant de cases que l'indique le dé. 
-    Là, le joueur doit suivre les instructions indiquées dans la case et prend les décisions économiques qu'il juge appropriées.
-    
-    De cette façon, tous les joueurs avancent à travers le plateau et font leur
-entreprise. 
+De cette manière, tous les joueurs avancent au travers du plateau et font leur stratégie. 
 Comme l'itinéraire est circulaire, il n'y a pas de point d'arrivée prédéterminé,
 raison pour laquelle ils continuent à tourner jusqu'à la fin du jeu. 
-Le jeu a terminé s'il ne reste qu'un seul joueur, si l'État échoue ou ce que l'on souhaite mettre fin au jeu.
-En s'agissant d'une simulation, la personne a decider s'on souhaite mettre fin au jeu est l'spectateur de la même.
+Le jeu se termine s'il ne reste qu'un seul joueur, si l'État échoue ou si l'on souhaite mettre fin au jeu.
+Pour cette simulation, la personne pouvant décider de mettre fin au jeu est le spectateur lui même.
 
     
-    \subsection{Case}
+    \subsection{Les cases}
   
-    	Comme on peu voir dans la \autoref{fig:cases}
+    	Comme on peut voir dans la \autoref{fig:cases}, il existe dans ce jeu différent type de cases. Voici leur particularités:
+    \begin{itemize}
+        \item \textbf{Investissement}: L'investissement est une case qui rapporte des bénéfices à son propriétaire.
+        	Chaque investissement est caractérisé par une valeur nominal et un pourcentage qui représente le bénéfice que cet investissement rapporte. 
+		L'investissement a deux états possibles: disponible, et approprié.
+		Quand un joueur arrive sur cet case, ses actions possibles dépendent de l'état de l'investissement.
+		Si l'investissement est possédé par un autre joueur, le joueur arrivant doit payer à son propriétaire l'utilité de cet investissement.
+		Par contre, si l'investissement est disponible, le joueur peut décider de l'acheter ou de le laissez passer. \footnote{ Plus de détailles sur les investissements dans la prochaine section }
+		
+	
+        \item \textbf{Loi antitrust}: Oblige le joueur à céder assez d'investissement pour que la valeur de ses propriétés soit sous le seuil maximum fixé par l'État. 
+    Ces investissements reviennent à l'État qui paie le joueur la moitié de leur prix d'achat. 
+
+    Par exemple, si le maximal d'investissements est 500000 euros, et un joueur ayant 3 investissements de 200000 (soit un total de 600000), doit laisser partir un investissement.  
+    Dans la même configuration, si un joueur ayant 3 investissements de 300000 (soit un total de 900000), il doit céder deux investissements. 
+    Une fois entre les mains de l'état, ces investissements deviennent de nouveau disponibles.
+
+        \item  \textbf{Bureau Finances publiques}: Oblige le joueur à payer à l'État un pourcentage de ses
+    capitaux propres, s'ils dépasseraient une certaine valeur. Chaque taxe se calcule comme un pourcentage du patrimoine du joueur.
+    La seule différence entre les types d'impôts, hors leur nom, est le pourcentage de prélèvement. 
+    Par exemples: un impôt sur le revenu de 25\% du patrimoine, un impôt foncier de 10\% du patrimoine, etc.
+        \item \textbf{Subvention}: Le joueur reçoit de l'État le montant indiqué dans la case.
+        \item \textbf{Repos}: C'est une case vide dans laquelle rien ne se passe. La \textbf{sortie} en fait partie.
+    \end{itemize}
+    
+    
 	  \begin{figure}
     \centering
     \subfigure[]{\includegraphics[width=2cm,height=2cm,keepaspectratio]{figures/investissement.pdf}} 
@@ -107,120 +131,84 @@ En s'agissant d'une simulation, la personne a decider s'on souhaite mettre fin a
     \label{fig:cases}
 \end{figure}
 
-
-        Il existe dans ce jeu différent type de cases. Voici leur particularités:
-    \begin{itemize}
-        \item \textbf{Investissement}: L'investissement est un cassier que rapport de benefits au propriétaire privé.
-        		Chaque investissement compte avec une valeur nominal et un pourcentage que represent l'utilité (ou benefit) de cet investissement. 
-		L'investissement a deux états possibles: disponible, et approprié.
-		De qu'un joueur arrive a cet case,
-		 si l'investissement est possédé par un autre joueur, le joueur arrivant doive payer au propriétaire l'utilité de cet investissement.
-		Si par contre, l'investissement est disponible, le joueur décide s'il veut le acheter ou le laissez passer. \footnote{ Plus de détailles sur les investissements dans la prochaine section }
-		
-	
-        \item \textbf{Loi antitrust}: Oblige le joueur à céder tous les investissements
-    qu'il possède et qui dépassent le maximum fixé par l'État. 
-    Ces investissements reviennent à l'Etat, qui paie le joueur la moitié de leur prix. 
-
-    Exemple, si le maximal d'investissements est 500000 euros, et un joueur a 3 investissements par 200000 (un total de 600000), il doive laisser partir un investissement.  
-    Dans la même configuration, si un joueur a 3 investissements par 300000 (un total de 900000), il doive laisser partir deux investissements. 
-    Une fois entre les mains de l'état, ces investissements deviennent de nouveau disponibles,  
-    en habilitant le future achat. 
-
-        \item  \textbf{Bureau Finances publiques}: Oblige le joueur à payer à l'État un pourcentage de ses
-    capitaux propres, au cas où ils dépasseraient une certaine valeur. Chaque taxe se calcule comme un pourcentage du patrimoine du joueur.
-    La seule difference entre les types d'impôts, hors du nom, est le pourcentage. 
-    Exemples: impôt sur le revenu / 25\% du patrimoine, impôt foncier / 10\% du patrimoine, etc.
-        \item \textbf{Subvention}: Le joueur reçoit de l'État le montant indiqué dans la case.
-        \item \textbf{Repos}: C'est une case vide dans laquelle rien ne se passe. La \textbf{sortie} en fait partie.
-    \end{itemize}
-    
-    
-
     \subsection{Investissements}
 	Les \textbf{investissements} sont le principal moyen pour les joueurs de gagner de l'argent. 
-	Initialement L'\'Etat possède tous les investissements.
-	Lorsque un investissement est possédé par l'état, on lui considère \textbf{disponible} pour l'achat. 
-	Si par contre le investissement est possédé par un joueur on lui considère \textbf{approprié}.
+	Initialement L'\'Etat les possède tous.
+	Lorsqu'un investissement est possédé par l'état, on le considère \textbf{disponible} à l'achat. 
+	Par contre, si un investissement est possédé par un joueur, on le considère \textbf{approprié}.
 	
-	Chaque investissement a un prix de référence (la valeur nominal),  et un pourcentage d'utilité ou benefit.
+	Chaque investissement a un prix de référence (la valeur nominal),  et un pourcentage de bénéfice.
 	
-	Lorsqu'un joueur tombe da une case Investissement, si l'investissement est disponible, cet joueur peut decider de acheter cet investissement. 
-	Pour lui acheter il doive payer a l'état la valeur nominal du investissement. 
+	Lorsqu'un joueur tombe sur une case investissement disponible, il peut décider de l'acheter. 
+	Pour ce, il doit payer à l'état la valeur nominal de l'investissement. 
 	
-	Lorsqu'un joueur tombe da une case Investissement, si l'investissement est approprié, cet joueur doive payer au propriétaire la valeur d'utilité ce cet investissement. 
-	La valuer d'utilité est calculé a partir de la multiplication de la valeur nominal du investissement par le pourcentage de benefit. 
+	Lorsqu'un joueur tombe sur une case investissement approprié, il doit payer au propriétaire la valeur d'utilité ce cet investissement. 
+	La valeur d'utilité est correspond au pourcentage de bénéfice de l'investissement de son prix d'achat. 
+	
+	Par exemple: Un joueur tombant sur un investissement approprié de 10000e à 1\% devra payer 100e au joueur le possédant.
 	 
 	
     \subsection{Style des joueurs}
-    En s'agissant d'une simulation, ou les decisions de joueur sont pris pour le programme, on doive définir des profiles de joueurs.
-    Les profiles de joueur proposé sont: \textbf{agressif} et \textbf{prudent}
+    S'agissant d'une simulation, où les décisions de joueurs sont prises par le programme, on doit définir des profiles de joueurs.
+    Les profiles proposés sont: \textbf{agressif} et \textbf{prudent}.
     
-   Chaque type de joueur donc vas prendre decisions différemment  
+   Chaque type de joueur prendra des décisions différemment.
    
-   \paragraph {Le joueur Agressif}  va essayer de tout prendre pour lui le plus vite possible. 
+   \paragraph {Le joueur Agressif}  va essayer de tout prendre le plus vite possible. 
    \begin{itemize}
-   	\item En rapport aux investissements: S'il a de l'argent suffisaient,  Il achète tout investissement ou il tombe
-	\item En rapport aux loi antitrust: Au moment de choisir qu'investissement se faire exproprier, il prendre les moins chers.
+   	\item En rapport aux investissements: S'il a suffisamment l'argent, il achète tous les investissements possibles.
+	\item En rapport aux loi antitrust: Au moment de choisir quels investissements se faire exproprier, il choisi les moins chers.
    \end{itemize}
    
   
-   \paragraph {Le joueur Prudent}  va de marcher sur de solide, en prennent des decisions un peu plus informées . 
+   \paragraph {Le joueur Prudent}  va prendre des décisions plus informées . 
     \begin{itemize}
-   	\item En rapport aux investissements: Il ne prendre jamais plus que une quantité configurable maximale des investissements.  Et il n'achète rien plus cher qu'un 20\% de son patrimoine. 
-	\item En rapport aux loi antitrust: Au moment de choisir qu'investissement se faire exproprier, il prendre les plus chers.
+   	\item En rapport aux investissements: Il ne prendra jamais plus qu'une quantité maximale d'investissements (Cette valeur est configurable). De plus, il n'achètera rien de plus cher que 20\% de son patrimoine. 
+	\item En rapport aux loi antitrust: Au moment de choisir quel investissement se faire exproprier, il choisi les plus chers.
    \end{itemize}
-
-
 
 
 \section{Simulation}
 
- Pour jouer ce jeu, on va le faire en mode simulation.
- 
- La simulation comprendre trois phases
- 
+ La simulation de ce jeu comprend trois phases:
  \begin{description} 
- 	\item [Configuration] L'utilisateur configure la simulation
-	\item [Jeu] Le jeu démarre. 
-	\item [Communication des résultats] On communique les résultats du jeu  
+ 	\item [Configuration:] L'utilisateur configure la simulation
+	\item [Jeu:] Le jeu démarre. 
+	\item [Communication des résultats:] On communique les résultats du jeu  
 \end{description}
  
  
- \paragraph{La configuration} S'agit du moment ou le joueur doive exprimer que type de simulation est-ce qu'il veut. 
-	Avec un de console interactive on va laisser  l'utilisateur définir la quantité des joueurs pour chaque type (Agressif / Prudent), la quantité d'argent a repartir entre les joueurs, la quantité d'argent pour l'État et le profile de simulation. 
+ \paragraph{La configuration} Il s'agit du moment où le joueur doit exprimer quel type de simulation il souhaite. 
+	Dans une console interactive, on laisse  l'utilisateur définir la quantité des joueurs pour chaque type (Agressif / Prudent), le capital des joueurs au départ, le capital de l'État et le profil de simulation. 
  
-  Chaque profile de simulation define quel tableau utiliser, comment partager l'argent entre les joueurs, les pourcentages d'impôts, l'argent minimal pour payer impôts , les pourcentages d'utilité des investissements et le patrimoine maximale pour la loi antitrust pour se appliquer. 
-  Le joueur doive être capable de choisir entre au moins deux du suivants profiles: 
+  Chaque profil de simulation définie quel tableau utiliser, comment partager l'argent entre les joueurs, les pourcentages d'impôts, l'argent minimal pour payer impôts , les pourcentages d'utilité des investissements et le patrimoine maximale pour la loi antitrust à appliquer. 
+  Le joueur doit être capable de choisir entre au moins deux des profils suivants: 
   \begin{itemize}
-  	\item \textbf{NeoLiberal}~: Certains joueurs avec beaucoup d'argent et d'autres avec peu, un état avec quelques
-mesures antitrust légères.
-  	\item \textbf{Socialiste}~: Tous les joueurs avec le même argent de départ, beaucoup de taxes.
-  	\item \textbf{Capitaliste}~: tous les joueurs agressifs, pourcentages de profit élevés, plus élevés
-ratio d'investissement.
-  	\item \textbf{Progressiste} : plus de joueurs, des lois antitrust strictes
-combiné avec des subventions, des pourcentages de profit modérés.
+  	\item \textbf{NeoLiberal}~: Certains joueurs ont beaucoup d'argent et d'autres en ont peu. L'état défini des mesures antitrust légères.
+  	\item \textbf{Socialiste}~: Tous les joueurs ont autant d'argent au départ. L'état fixe beaucoup de taxes.
+  	\item \textbf{Capitaliste}~: Tous les joueurs sont agressifs, les pourcentages de profits sont élevés,  les ratio d'investissement sont plus élevés.
+  	\item \textbf{Progressiste} : Se joue avec plus de joueurs, les lois antitrust sont strictes combiné avec des subventions\cfd{Tu veux dire que les subventions sont élevées?}, les pourcentages de profits sont modérés.
   	\item \textbf{l'Europe après le Covid-19} : (au choix de chacun).
 \end{itemize}
  
  
-  \paragraph{Le jeu} ou la simulation bien compris. 
-  	Une fois on a tout l'information, faire jouer les joueurs une fois par tour de rôle.
+  \paragraph{Le jeu}. 
+  	Une fois que l'on à fourni toute les informations, ont fait jouer les joueurs à tour de rôle.
 	
-	 En utilisent la generation des numéros aléatoires pour representer le dé, on doive faire jouer chaque jouer et informer qu'il a fait.
+	 En utilisent une génération de numéros aléatoires pour représenter le dé, on fait jouer chaque joueur et on informe ce qu'il a fait.
 	 
-	 Une fois que le tour de rôle est fini (tous les joueurs ont joue) on procède a verifier si le jeu est fini. Si le jeu est fini, on doive sauter a la dernière phase. 
+	 Une fois que le tour est fini (tous les joueurs ont joués) on vérifie si le jeu est fini. S'il l'est, on saute à la dernière phase. 
 	 
-	 Si le jeu n'a pas finit, on doive demander a l'utilisateur s'il veut continuer la simulation. Si oui, on procède au suivant tour de rôle, sinon, on saute a la dernière phase.
+	 Si le jeu n'est pas finit, on demande à l'utilisateur s'il veut continuer la simulation. Si oui, on procède au suivant tour de rôle, sinon, on saute à la dernière phase.
 	
   
-  \paragraph{La Communication des résultats} comprehend la raison du fin de jeu, la declaration du gagnant, l'impression  du ranking des joueurs et l'impression de l'état de l'État. 
+  \paragraph{La Communication des résultats} Informe de la raison du fin de jeu, déclare quel joueur à gagné la partie, imprime le classement des joueurs et l'impression l'état de l'État. 
   	Par exemple
 \begingroup\makeatletter\def\@currenvir{verbatim}
 \verbatim
-	  l'Etat a échoue! 
+	  L'État à échoue! 
 	
-	  Gagnant Jouer 1 
+	  Gagnant: Joueur 1 
 	  ================
 	  	
 	   #     Nom            Investissements   Liquide     Patrimoine
@@ -228,7 +216,7 @@ combiné avec des subventions, des pourcentages de profit modérés.
 	   1 -   Joueur 2       6000              1010        7010
 	   1 -   Joueur 3       6000              1010        7010
 	   ==================================================
-   Etat - 
+   État - 
         Investissements: 0
         Liquide: 0
 \end{verbatim}
@@ -238,20 +226,18 @@ combiné avec des subventions, des pourcentages de profit modérés.
         
 \section{Exigences du projet}
 
-	Sur la base de l'approche générale du jeu, l'implémentation demandée doit comprendre la livraison de:
+	L'implémentation demandée suivra ces jalons de livraison:
 	
 	\begin{description}
-		\item [Lundi 1/Juin - 5 Points ] La conception logiciel exprimé en UML au debut d'exercice 
-		\item [A livrer a la fin de chaque cours - 3 Points ] Une quantité minimal de 1 tests unitaires par  journée de cours
-		\item [Lundi 8/Juin - 2 Points] Point sur l'implementation, revision de la creation du plateau.
-		\item [Vendredi 19/Juin - 5 Points]  La conception logiciel exprimé en UML a la fin d'exercice, avec une bref explication de la evolution du modele.
-		\item [Lundi 22/Juin - 5 Points] L'implementation complete du simulation 
+		\item [Lundi 1/Juin - 5 Points ] Livraison d'une conception exprimé en UML pour répondre aux contraintes de l'exercice.
+		\item [A livrer à la fin de chaque cours - 3 Points ] Les développements du cours comprenant au moins 1 test unitaire utile par cours.
+		\item [Lundi 8/Juin - 2 Points] Livraison de l'implémentation de la création du plateau.
+		\item [Vendredi 19/Juin - 5 Points]  Livraison d'une révision de la conception UML suite à l'implémentation et d'un cours rapport expliquant les raisons de l'évolution de l'UML s'il y en a eu.
+		\item [Lundi 22/Juin - 5 Points] Implémentation complète de la simulation. 
 	\end{description} 
 		
-	Le cours rendre un maximum de 20 points. 
-	Si vous voulez rajouter des points, vous pouvez demander des points bonus.
+	Le cours est noté sur 20 points. 
+	Si vous terminez en avance, il est possible de demander des fonctionnalités supplémentaires à implémenter. Ceci peut rapporter jusqu'à deux points bonus. (Le maximum restant 20 points. Si la note sans bonus est supérieure à 18, elle ne pourra pas dépasser les 20).
 	
-
-
 \end{document}
 
