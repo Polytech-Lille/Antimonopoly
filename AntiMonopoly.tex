@@ -166,7 +166,17 @@ Pour cette simulation, la personne pouvant décider de mettre fin au jeu est le 
    	\item En rapport aux investissements: Il ne prendra jamais plus qu'une quantité maximale d'investissements (Cette valeur est configurable). De plus, il n'achètera rien de plus cher que 20\% de ses capitaux. 
 	\item En rapport aux loi antitrust: Au moment de choisir quel investissement se faire exproprier, il choisi les plus chers.
    \end{itemize}
-
+   
+    \subsection{Payer avec un capital insuffisant}
+    Dans le cas où un joueur doit en payer un autre ou l'état alors qu'il ne lui reste plus suffisamment de capitaux, 
+    deux situations sont possibles.
+    
+    \paragraph {Le joueur à du patrimoine} 
+   Si le joueur possède des investissements, nous appliquons les mêmes règles que pour les loi anti-trusts.
+   Le joueur sera contraint de vendre de investissements à la moitié de leur prix d'achat à l'état jusqu'à avoir suffisamment d'argent pour payer. S'il arrive à payer, la partie continu. Si la somme n'est toujours pas atteinte après avoir vendu tous les investissements, le joueur payera la somme maximale et sera éliminé lors de ce tour.
+   Le choix des biens à vendre lors de la simulation dépendra du profil du joueur et sera le même que pour les loi anti-trust.
+    \paragraph {Le joueur n'a pas de patrimoine} 
+	Dans le cas ou le joueur n'a plus de patrimoine, il donne l'intégralité de son argent au joueur concerné ou à l'état et sera éliminé lors de ce tour de simulation.
 
 \section{Simulation}
 
@@ -266,6 +276,14 @@ Pour cette simulation, la personne pouvant décider de mettre fin au jeu est le 
 	
 	Le cours est noté sur 20 points. 
 	Si vous terminez en avance, il est possible de demander des fonctionnalités supplémentaires à implémenter. Ceci peut rapporter jusqu'à deux points bonus. (Le maximum restant 20 points. Si la note sans bonus est supérieure à 18, elle ne pourra pas dépasser les 20).
+	
+	\section{Glossaire}
+	 \begin{description} 
+ 	\item [Capitaux:] Argent directement disponible à un joueur où à l'état.
+	\item [Capitaux propres:] Somme des capitaux et du patrimoine d'un joueur où de l'état.
+	\item [Patrimoine:] Valeur des investissements d'un joueur ou de l'état.
+\end{description}
+	
 	
 \end{document}
 
