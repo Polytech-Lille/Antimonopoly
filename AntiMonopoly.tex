@@ -68,7 +68,7 @@ montant d'argent initial. Au fur et à mesure que le jeu progresse, chacun des j
 ou décroit son argent, selon les décisions d'investissement qu'ils prennent ou d'autres
 circonstances. Les capitaux propres d'un joueur correspondent à
 son argent plus l'évaluation de tous les investissements qu'il possède.
-Si un joueur perd tous ses capitaux il a perdu: il ne peut pas continuer à jouer.
+Si un joueur perd tous ses capitaux propre (argent + investissements) il a perdu: il ne peut pas continuer à jouer.
     
     \subsection{L'\'Etat}
     
@@ -109,10 +109,10 @@ Pour cette simulation, la personne pouvant décider de mettre fin au jeu est le 
     Dans la même configuration, si un joueur ayant 3 investissements de 300000 (soit un total de 900000), il doit céder deux investissements. 
     Une fois entre les mains de l'état, ces investissements deviennent de nouveau disponibles.
 
-        \item  \textbf{Bureau Finances publiques}: Oblige le joueur à payer à l'État un pourcentage de ses
-    capitaux propres, s'ils dépasseraient une certaine valeur. Chaque taxe se calcule comme un pourcentage du patrimoine du joueur.
-    La seule différence entre les types d'impôts, hors leur nom, est le pourcentage de prélèvement. 
-    Par exemples: un impôt sur le revenu de 25\% du patrimoine, un impôt foncier de 10\% du patrimoine, etc.
+        \item  \textbf{Bureau Finances publiques}: Oblige le joueur à payer à l'État un pourcentage de la valeur de son capital ou de son patrimoine.
+        Le joueur utilisera ses capitaux pour payer l'état.
+        Ces impôts sont caractérises par leur type (foncier sur le patrimoine ou revenu sur le capital) et leur pourcentage de prélèvement.
+    Par exemples: Nous pouvons avoir un impôt sur le revenu de 25\% du capital. Ou un impôt foncier de 10\% du patrimoine. Ou un impôt foncier de 5\% du patrimoine.
         \item \textbf{Subvention}: Le joueur reçoit de l'État le montant indiqué dans la case.
         \item \textbf{Repos}: C'est une case vide dans laquelle rien ne se passe. La \textbf{sortie} en fait partie.
     \end{itemize}
